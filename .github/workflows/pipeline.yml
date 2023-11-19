@@ -8,6 +8,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:  
 
 jobs:
   build:
@@ -27,6 +28,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: Build app
+    - name: Install dependencies
       run: npm install
-
+    - name: Start app
+      run: npm start
+    - name: Run test
+      run: npm test
